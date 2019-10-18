@@ -2,11 +2,11 @@
 
 namespace Models;
 
-require_once('DiscountEngine.php');
+require_once('stark/DiscountEngine.php');
 require_once('models/LocalDiscountEngine/AttributeBase.php');
 require_once('models/LocalDiscountEngine/CommonAttributes.php');
 
-class LocalDiscountEngine extends \DiscountEngine {
+class LocalDiscountEngine extends \Stark__DiscountEngine {
 	protected static $__attribute_require_matrix = array(
 		// 'models/LocalDiscountEngine/CommonAttributes.php' => array('is_bogo'),
 

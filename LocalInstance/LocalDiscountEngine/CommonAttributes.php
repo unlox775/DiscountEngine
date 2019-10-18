@@ -15,7 +15,7 @@
 
 /// ATTR: Can Be Discounted Limit:
 ///   Things like gift cards cannot be discounted
-class DiscountEngine__CanBeDiscountedAttribute extends DiscountEngine__AttributeBase {
+class LocalDiscountEngine__CanBeDiscountedAttribute extends DiscountEngine__AttributeBase {
 	public $ignore_attr_in_quote_mode = true;
 	public static function defaultValue() { return (object) array(); }
 	public static function getDisplayLabel() { return "Can Be Discounted (Not Shown in Admin, Auto-added to all discounts)"; }
@@ -29,7 +29,7 @@ class DiscountEngine__CanBeDiscountedAttribute extends DiscountEngine__Attribute
 
 /// ATTR: Min Subotal:
 ///   Ignores discount until subtotal goes over the given amount
-class DiscountEngine__LimitMinSubtotalAttribute extends DiscountEngine__AttributeBase {
+class LocalDiscountEngine__LimitMinSubtotalAttribute extends DiscountEngine__AttributeBase {
 	public $ignore_attr_in_quote_mode = true;
 	public static function defaultValue() { return (object) array('value' => 150); }
 	public static function getDisplayLabel() { return "Minimum Subtotal"; }
@@ -51,7 +51,7 @@ class DiscountEngine__LimitMinSubtotalAttribute extends DiscountEngine__Attribut
 
 /// ATTR: Min Subotal:
 ///   Ignores discount until subtotal goes over the given amount
-class DiscountEngine__MasterOrderLimitMinSubtotalAttribute extends DiscountEngine__AttributeBase {
+class LocalDiscountEngine__MasterOrderLimitMinSubtotalAttribute extends DiscountEngine__AttributeBase {
 	public $ignore_attr_in_quote_mode = true;
 	public static function defaultValue() { return (object) array('value' => 150); }
 	public static function getDisplayLabel() { return "Minimum Subtotal on Master Order"; }
@@ -73,7 +73,7 @@ class DiscountEngine__MasterOrderLimitMinSubtotalAttribute extends DiscountEngin
 
 /// ATTR: Order Has Item Limit:
 ///   Ignores discount unless order has the given item in cart
-class DiscountEngine__OrderHasItemLimitAttribute extends DiscountEngine__AttributeBase {
+class LocalDiscountEngine__OrderHasItemLimitAttribute extends DiscountEngine__AttributeBase {
 	public $ignore_attr_in_quote_mode = true;
 	public static function defaultValue() { return (object) array('value' => 9001); }
 	public static function getDisplayLabel() { return "Order Has Item in Cart"; }
@@ -99,7 +99,7 @@ class DiscountEngine__OrderHasItemLimitAttribute extends DiscountEngine__Attribu
 
 /// ATTR: Order Has Item CATEGORY Limit:
 ///   Ignores discount unless order has the given item from This Category in cart
-class DiscountEngine__OrderHasItemCategoryLimitAttribute extends DiscountEngine__AttributeBase {
+class LocalDiscountEngine__OrderHasItemCategoryLimitAttribute extends DiscountEngine__AttributeBase {
 	public $ignore_attr_in_quote_mode = true;
 	public static function defaultValue() { return (object) array('value' => 9001); }
 	public static function getDisplayLabel() { return "Order Has Item in Cart"; }
@@ -125,7 +125,7 @@ class DiscountEngine__OrderHasItemCategoryLimitAttribute extends DiscountEngine_
 
 /// ATTR: Item SKU has CATEGORY Limit:
 ///   Only applies to lines from this category
-class DiscountEngine__ItemSkuHasCategoryLimitAttribute extends DiscountEngine__AttributeBase {
+class LocalDiscountEngine__ItemSkuHasCategoryLimitAttribute extends DiscountEngine__AttributeBase {
 	public $ignore_attr_in_quote_mode = true;
 	public static function defaultValue() { return (object) array('value' => 9001); }
 	public static function getDisplayLabel() { return "Order Has Item in Cart"; }
@@ -151,7 +151,7 @@ class DiscountEngine__ItemSkuHasCategoryLimitAttribute extends DiscountEngine__A
 
 
 /// ATTR: LINE Level Discount
-class DiscountEngine__LineDiscountAttribute extends DiscountEngine__AttributeBase {
+class LocalDiscountEngine__LineDiscountAttribute extends DiscountEngine__AttributeBase {
 	public static function defaultValue() { return (object) array('type' => 'dollar', 'value' => 0); }
 	public function dataPassesValidation() {
 		if ( ! isset(   $this->attr_data->type )
@@ -207,7 +207,7 @@ class DiscountEngine__LineDiscountAttribute extends DiscountEngine__AttributeBas
 
 /// ATTR: Stacking Restrictions:
 ///   Stops one discount to work on a line that is already discounted by another
-class DiscountEngine__NoDiscountStackingAttribute extends DiscountEngine__AttributeBase {
+class LocalDiscountEngine__NoDiscountStackingAttribute extends DiscountEngine__AttributeBase {
 	public $ignore_attr_in_quote_mode = true;
 	public static function requiresAttributes() { return array('frame_discount','order_discount'); } // values are OR.  For AND, use a sub-array
 	public static function incompatibleWithAttributes() { return array('limit_platform[value=gson]' /*,'order_discount' */); }
@@ -234,7 +234,7 @@ class DiscountEngine__NoDiscountStackingAttribute extends DiscountEngine__Attrib
 
 
 /// ATTR: $X off shipping cost:
-class DiscountEngine__ShippingCostDiscountAttribute extends DiscountEngine__AttributeBase {
+class LocalDiscountEngine__ShippingCostDiscountAttribute extends DiscountEngine__AttributeBase {
 	public $ignore_attr_in_quote_mode = true;
 	public static function requiresAttributes() { return array('limit_platform[value=web]'); }
 	public static function incompatibleWithAttributes() { return array('limit_platform[value=gson]'); }
@@ -268,7 +268,7 @@ class DiscountEngine__ShippingCostDiscountAttribute extends DiscountEngine__Attr
 
 /// ATTR: Set Base Shipping Cost:
 ///   Subtract X amount, to simulate that base shipping cost was [value]
-class DiscountEngine__SetBaseShippingCostAttribute extends DiscountEngine__AttributeBase {
+class LocalDiscountEngine__SetBaseShippingCostAttribute extends DiscountEngine__AttributeBase {
 	public $ignore_attr_in_quote_mode = true;
 	public static function requiresAttributes() { return array('limit_platform[value=web]'); }
 	public static function incompatibleWithAttributes() { return array('limit_platform[value=gson]'); }
@@ -302,7 +302,7 @@ class DiscountEngine__SetBaseShippingCostAttribute extends DiscountEngine__Attri
 
 
 /// ATTR: Free FIXED Gift with Purchase (Added to Order on a random line)
-class DiscountEngine__FreeGiftFixedAttribute extends DiscountEngine__AttributeBase {
+class LocalDiscountEngine__FreeGiftFixedAttribute extends DiscountEngine__AttributeBase {
 	public $ignore_attr_in_quote_mode = true;
 
 	public static function defaultValue() { return (object) array('free_gift_item_ids' => []); }

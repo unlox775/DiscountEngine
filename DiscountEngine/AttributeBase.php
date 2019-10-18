@@ -1,6 +1,6 @@
 <?php
 
-class Inetz__DiscountEngine__AttributeBase {
+class Stark__DiscountEngine__AttributeBase {
 	protected $discount_id = null;
 	protected $discount_obj = null;
 	public $attr_data = null;
@@ -14,7 +14,7 @@ class Inetz__DiscountEngine__AttributeBase {
 	public static $APP_CALC_OPTIN_DOLLAR_DISCOUNT = 2;
 	public static $APP_CALC_OPTIN_PERCENT_DISCOUNT = 3;
 
-	public function __construct($discount_id, stdClass $discount_obj, stdClass $attr_data, Inetz__DiscountEngine $engine, stdClass $work_area) {
+	public function __construct($discount_id, stdClass $discount_obj, stdClass $attr_data, Stark__DiscountEngine $engine, stdClass $work_area) {
 		$this->discount_id = $discount_id;
 		$this->discount_obj = $discount_obj;
 		$this->attr_data = $attr_data;
@@ -37,7 +37,7 @@ class Inetz__DiscountEngine__AttributeBase {
 	///  Stubs and Defaults
 
 	public static function getDisplayLabel() {
-		$tmp = preg_replace('/(^(Inetz__)?DiscountEngine__|Attribute$)/','',get_called_class());
+		$tmp = preg_replace('/(^(Stark__)?DiscountEngine__|Attribute$)/','',get_called_class());
 		return ltrim(preg_replace('/([A-Z])/',' $1',$tmp),' ');
 	}
 	public static function defaultValue() { throw new DiscountEngineException("Attribute ". get_called_class() ." forgot to override the defaultValue() method"); }

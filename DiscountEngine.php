@@ -2,7 +2,7 @@
 
 require_once(__DIR__ .'/DiscountEngine/AttributeBase.php');
 
-class DiscountEngine {
+class Stark__DiscountEngine {
 	public $debug = 0;
 	protected $__order_data = null;
 	protected $__discounts = null;
@@ -1011,7 +1011,7 @@ class DiscountEngine {
 		return 'DiscountEngine__'. preg_replace_callback('/(?:^|_)(.?)/',function($s){ return strtoupper($s[1]); },$attr) .'Attribute';
 	}
 	public static function classToAttrName($class) {
-		$tmp = preg_replace('/(^DiscountEngine__|Attribute$)/','',$class);
+		$tmp = preg_replace('/(^(Stark__)?DiscountEngine__|Attribute$)/','',$class);
 		return ltrim(strtolower(preg_replace('/([A-Z])/','_$1',$tmp)),'_');
 	}
 
@@ -1024,7 +1024,7 @@ class DiscountEngine {
 
 		$all_info = array();
 		foreach ( get_declared_classes() as $class_name ) {
-			if ( preg_match('/DiscountEngine__\w+?Attribute/i', $class_name) ) {
+			if ( preg_match('/(Stark__)?DiscountEngine__\w+?Attribute/i', $class_name) ) {
 				$attr_name = $self::classToAttrName($class_name);
 
 				$attr_info = array(

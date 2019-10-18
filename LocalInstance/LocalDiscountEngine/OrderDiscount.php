@@ -14,7 +14,7 @@
 
 
 /// ATTR: ORDER Level Discount
-class DiscountEngine__OrderDiscountAttribute extends DiscountEngine__AttributeBase {
+class LocalDiscountEngine__OrderDiscountAttribute extends DiscountEngine__AttributeBase {
 	public $ignore_attr_in_quote_mode = true;
 
 	public static function defaultValue() { return (object) array('type' => 'dollar', 'value' => 0); }
@@ -112,7 +112,7 @@ class DiscountEngine__OrderDiscountAttribute extends DiscountEngine__AttributeBa
 
 
 /// ATTR: ORDER Level Discount
-class DiscountEngine__MasterOrderDiscountAttribute extends DiscountEngine__OrderDiscountAttribute {
+class LocalDiscountEngine__MasterOrderDiscountAttribute extends DiscountEngine__OrderDiscountAttribute {
 	///  For ability to override for another child-attr
 	protected function __getOrderSubtotalWithDiscount() {
 		return $this->engine->getEnvironment()->master_order_subtotal;
